@@ -149,6 +149,13 @@ class DataProcessor:
                 candidates.append(candidate["utterance"])
                 label.append(0)
 
+            # 防止变成正类永远在第一位
+            candidates_label = list(zip(candidates, label))
+            np.random.shuffle(candidates_label)
+            candidates, label = zip(*candidates_label)
+            candidates = list(candidates)
+            label = list(label)
+
             guid = "%s-%s" % (data_type, data["example-id"])
             examples.append(
                 InputExample(guid=guid, context=contexts, candidate=candidates, label=label)
