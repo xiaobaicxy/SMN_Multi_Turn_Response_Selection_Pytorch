@@ -28,7 +28,7 @@ class Config:
         
         self.max_turn_num = 10
         self.max_seq_len = 50
-        self.candidates_set_size = 10 #Rn@k: n=2, k=1
+        self.candidates_set_size = 2 #Rn@k: n=2，10，100, k=1
 
         self.batch_size = 12
         self.epochs = 1000
