@@ -13,11 +13,11 @@ torch.manual_seed(512)
 class Config:
     def __init__(self):
         self.data_path = {
-            "train": "/home/fuyong/workspace/dataset/dialogue/ubuntu_train_subtask_1.json",
-            # "train": "/home/fuyong/workspace/dataset/dialogue/ubuntu_dev_subtask_1.json", # for debug
-            "dev": "/home/fuyong/workspace/dataset/dialogue/ubuntu_dev_subtask_1.json"
+            "train": "./dataset/dialogue/ubuntu_train_subtask_1.json",
+            # "train": "./dataset/dialogue/ubuntu_dev_subtask_1.json", # for debug
+            "dev": "./dataset/dialogue/ubuntu_dev_subtask_1.json"
         }
-        self.vocab_path = "/home/fuyong/workspace/dataset/dialogue/vocab.txt"
+        self.vocab_path = "./dataset/dialogue/vocab.txt"
         self.model_save_path = "./stm_model_param.pkl"
         self.update_vocab = True
 
