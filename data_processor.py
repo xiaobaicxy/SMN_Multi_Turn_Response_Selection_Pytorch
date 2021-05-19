@@ -141,8 +141,8 @@ class DataProcessor:
                 raise ValueError(f"Data: {data['example-id']} has no label")
 
             # 随机挑选负例
-            neg_indices = [idx for idx in range(label_idx)] + [idx for idx in range(label_idx+1, len(data["options-for-next"]))]
-            np.random.shuffle(neg_indices)
+            neg_indices = [idx for idx in range(label_idx)] + [idx for idx in range(label_idx+1, len(data["options-for-next"]))] # 跳过正类
+            np.random.shuffle(neg_indices) # 注意np不能加seed
             neg_indices = neg_indices[:n-1]
             for candidate_idx in neg_indices:
                 candidate = data["options-for-next"][candidate_idx]
@@ -151,7 +151,7 @@ class DataProcessor:
 
             # 防止变成正类永远在第一位
             candidates_label = list(zip(candidates, label))
-            np.random.shuffle(candidates_label)
+            np.random.shuffle(candidates_label) # 注意np不能加seed
             candidates, label = zip(*candidates_label)
             candidates = list(candidates)
             label = list(label)

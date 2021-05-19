@@ -19,6 +19,7 @@ class Config:
         }
         self.vocab_path = "/home/fuyong/workspace/dataset/dialogue/vocab.txt"
         self.model_save_path = "./stm_model_param.pkl"
+        self.update_vocab = True
 
         self.vocab_size = 50000
         self.embed_dim = 200
@@ -106,7 +107,7 @@ if __name__ == "__main__":
     train_dataset_tokens = processor.get_dataset_tokens(train_examples)
     dev_dataset_tokens = processor.get_dataset_tokens(dev_examples)
     
-    if not os.path.exists(config.vocab_path):
+    if not os.path.exists(config.vocab_path) or config.update_vocab:
         processor.create_vocab(train_dataset_tokens, config.vocab_path)
     
     train_dataset_indices, vocab_size = processor.get_dataset_indices(train_dataset_tokens,
